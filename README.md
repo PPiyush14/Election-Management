@@ -1,4 +1,4 @@
-DatabaseManager.java:
+# DatabaseManager.java:
 
 This Java class acts as a bridge between the application and the database using JDBC. It typically provides:
 
@@ -10,7 +10,7 @@ This Java class acts as a bridge between the application and the database using 
 
 4.Encapsulation of SQL logic to keep the rest of the application decoupled from database code.
 
-Java Project.sql – Database Schema:
+# Java Project.sql – Database Schema:
 
 This SQL script is responsible for setting up the relational database schema for a Java-based application. It includes:
 voters, candidates and votes table.
