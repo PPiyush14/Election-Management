@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Voting System</title>
+</head>
+<body>
+    <h1>Candidates</h1>
+    <ul>
+        <li th:each="candidate : ${candidates}">
+            <span th:text="${candidate.name}"></span> - Votes: <span th:text="${candidate.votes}"></span>
+            <a th:href="@{'/vote/' + ${candidate.id}}">Vote</a>
+        </li>
+    </ul>
+    <a href="/admin">Admin Panel</a>
+</body>
+</html>
+
+/* === templates/admin.html === */
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Candidate Name" required>
+        <button type="submit">Add Candidate</button>
+    </form>
+    <ul>
+        <li th:each="candidate : ${candidates}">
+            <span th:text="${candidate.name}"></span>
+            <a th:href="@{'/delete/' + ${candidate.id}}">Delete</a>
+        </li>
+    </ul>
+    <a href="/">Back to Voting</a>
+</body>
+</html>
