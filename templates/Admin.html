@@ -1,0 +1,48 @@
+<!-- templates/admin.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .candidate {
+            margin-bottom: 10px;
+        }
+        .delete-button {
+            margin-left: 10px;
+            color: white;
+            background-color: #e74c3c;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin Panel - Manage Candidates</h2>
+
+    <div class="form-group">
+        <form action="/add" method="post">
+            <input type="text" name="name" placeholder="Enter Candidate Name" required>
+            <button type="submit">Add Candidate</button>
+        </form>
+    </div>
+
+    <h3>Existing Candidates</h3>
+    <ul>
+        <li th:each="candidate : ${candidates}" class="candidate">
+            <span th:text="${candidate.name}"></span>
+            <a th:href="@{'/delete/' + ${candidate.id}}" class="delete-button">Delete</a>
+        </li>
+    </ul>
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
