@@ -1,0 +1,38 @@
+<!-- templates/vote.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Vote for Candidate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .candidate {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .vote-button {
+            margin-left: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Vote for Your Favorite Candidate</h2>
+
+    <div th:each="candidate : ${candidates}" class="candidate">
+        <span th:text="${candidate.name}"></span> — Votes: <span th:text="${candidate.votes}"></span>
+        <a th:href="@{'/vote/' + ${candidate.id}}" class="vote-button">Vote</a>
+    </div>
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
